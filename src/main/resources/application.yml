@@ -1,0 +1,6 @@
+server:
+  port: 8888
+rocketmq:
+  name-server: 49.232.105.152:9876
+  producer:
+    group: demo-group

@@ -2,6 +2,7 @@ package com.dazhi.rocketmqpractice.prducer;
 
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.Message;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,9 @@ public class SendMessageController {
 
     @GetMapping
     public String sendSimpleMessage() {
-        rocketMQTemplate.convertAndSend("TopicTest","这是一条测试信息");
+        for (int i = 0;i<10;i++) {
+            rocketMQTemplate.convertAndSend("TopicTest", "这是一条测试信息" + i);
+        }
         return "SUCCESS";
     }
 }
